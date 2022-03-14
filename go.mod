@@ -3,6 +3,8 @@ module github.com/Ab-hishek/data-populator
 go 1.16
 
 require (
-	k8s.io/api v0.23.4
-	k8s.io/apimachinery v0.23.4
+	github.com/kubernetes-csi/lib-volume-populator v0.1.0
+	k8s.io/api v0.22.0
+	k8s.io/apimachinery v0.22.0
+	k8s.io/klog v1.0.0
 )
