@@ -13,8 +13,6 @@ spec:
     kind: RsyncPopulator
     listKind: RsyncPopulatorList
     plural: rsyncpopulators
-    shortNames:
-    - rp
     singular: rsyncpopulator
   scope: Namespaced
   versions:

@@ -6,9 +6,15 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+const (
+	StatusWaitingForConsumer = "WaitingForConsumer"
+	StatusInProgress         = "InProgress"
+	StatusCompleted          = "Completed"
+	StatusFailed             = "Failed"
+)
+
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// +kubebuilder:resource:scope=Namespaced,shortName=rp
 // RsyncPopulator is a volume populator that helps
 // to create a volume from any rsync source.
 type RsyncPopulator struct {
@@ -42,7 +48,6 @@ type RsyncPopulatorSpec struct {
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// +kubebuilder:resource:scope=Namespaced,shortName=dp
 // DataPopulator contains information used for populating volume from
 // a given to a desired destination
 type DataPopulator struct {

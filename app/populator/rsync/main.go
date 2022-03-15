@@ -51,14 +51,14 @@ func getPopulatorArgs(rawBlock bool, u *unstructured.Unstructured) ([]string, er
 	populator := internalv1alpha1.RsyncPopulator{}
 	err := runtime.DefaultUnstructuredConverter.
 		FromUnstructured(u.UnstructuredContent(), &populator)
-	if nil != err {
+	if err != nil {
 		return nil, err
 	}
 
 	args := []string{
 		"bash",
 		"-c",
-		"export RSYNC_PASSWORD="+populator.Spec.Password+"; rsync -rv rsync://" + populator.Spec.Username + "@" + populator.Spec.URL + populator.Spec.Path + " " + mountPath,
+		"export RSYNC_PASSWORD=" + populator.Spec.Password + "; rsync -rv rsync://" + populator.Spec.Username + "@" + populator.Spec.URL + populator.Spec.Path + " " + mountPath,
 	}
 	return args, nil
 }

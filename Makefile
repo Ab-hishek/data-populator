@@ -16,7 +16,7 @@ rsync-populator-binary:
 data-populator-binary:
 	mkdir -p bin
 	rm -rf bin/data-populator
-	CGO_ENABLED=0 go build -o bin/data-populator app/populator/data/*
+	CGO_ENABLED=0 go build -o bin/data-populator ./app/populator/data/
 
 .PHONY: rsync-populator-image
 rsync-populator-image: rsync-populator-binary
