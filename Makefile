@@ -1,5 +1,5 @@
 DOCKERHUB_USERNAME ?= abhishek09dh
-LATEST_TAG ?= 30
+LATEST_TAG ?= 34
 
 .PHONY: crd-gen
 crd-gen:
@@ -26,9 +26,9 @@ rsync-populator-image: rsync-populator-binary
 data-populator-image: data-populator-binary
 	docker build -t $(DOCKERHUB_USERNAME)/data-populator:$(LATEST_TAG) -f buildscripts/populator/data/Dockerfile .
 
-.PHONY: rsync-server-image
-rsync-server-image:
-	docker build -t $(DOCKERHUB_USERNAME)/rsync-server:$(LATEST_TAG) -f buildscripts/rsync/server/Dockerfile .
+.PHONY: rsync-daemon-image
+rsync-daemon-image:
+	docker build -t $(DOCKERHUB_USERNAME)/rsync-daemon:$(LATEST_TAG) -f buildscripts/rsync/server/Dockerfile .
 
 .PHONY: rsync-client-image
 rsync-client-image:

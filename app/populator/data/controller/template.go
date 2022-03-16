@@ -21,6 +21,7 @@ func templateFromDataPopulator(cr internalv1alpha1.DataPopulator) (*templateConf
 		sourcePVCName:      cr.Spec.SourcePVC,
 		sourcePVCNamespace: cr.Spec.SourcePVCNamespace,
 		destinationPVCSpec: cr.Spec.DestinationPVC,
+		imageName:          rsyncServerImage,
 		rsyncUsername:      cr.Spec.RsyncDaemonUsername,
 		rsyncPassword:      cr.Spec.RsyncDaemonPassword,
 	}
@@ -101,8 +102,8 @@ reverse lookup = no
     hosts deny = *
     hosts allow = 0.0.0.0/0
     read only = false
-    path = `+SourcePvcMountPath+`
-    auth users = , `+tc.rsyncUsername+`:rw
+    path = ` + SourcePvcMountPath + `
+    auth users = , ` + tc.rsyncUsername + `:rw
     secrets file = /etc/rsyncd.secrets
     timeout = 600
     transfer logging = true
@@ -153,6 +154,10 @@ func (tc *templateConfig) getPodTemplate() corev1.Pod {
 							Name:  "RSYNC_PASSWORD",
 							Value: tc.rsyncPassword,
 						},
+						{
+							Name:  "RSYNC_USERNAME",
+							Value: tc.rsyncPassword,
+						},
 					},
 					Ports: []corev1.ContainerPort{
 						{
@@ -166,8 +171,8 @@ func (tc *templateConfig) getPodTemplate() corev1.Pod {
 						},
 						{
 							Name:      "config",
-							MountPath: "/etc/rsyncd.con",
-							SubPath:   "rsyncd.con",
+							MountPath: "/etc/rsyncd.conf",
+							SubPath:   "rsyncd.conf",
 						},
 					},
 				},

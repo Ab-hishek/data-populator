@@ -280,7 +280,8 @@ func (c *controller) syncPopulator(ctx context.Context, key, namespace, name str
 		return nil
 	}
 
-	// Delete all the rsync daemon resources
+	// Delete all the rsync daemon resources when the finalizer set by the rsync-populator is gone.
+	// The finalizer is removed only when the source data has been fully populated into into the desired destination.
 	if err := c.ensureRsyncDaemon(false, dptc, dptc.sourcePVCNamespace); err != nil {
 		return err
 	}

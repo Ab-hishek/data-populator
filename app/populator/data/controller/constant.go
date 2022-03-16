@@ -25,5 +25,6 @@ const (
 
 	populatorFinalizer = "openebs.io/populate-target-protection"
 
-	RsyncNamePrefix = "rsync-daemon-"
+	RsyncNamePrefix  = "rsync-daemon-"
+	rsyncServerImage = "abhishek09dh/rsync-daemon:33"
 )
