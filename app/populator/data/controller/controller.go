@@ -513,51 +513,6 @@ func (c *controller) ensurePod(want bool, namespace string, pod *corev1.Pod) err
 	return nil
 }
 
-func (c *controller) ensureResource(want bool, namespace string, pod *corev1.Pod, object interface{}) error {
-	podClone := pod.DeepCopy()
-
-	resource := "Pod"
-	var ob1, ob2 interface{}
-	if ob1,ok := object.(corev1.Pod); ok {
-		podclone := ob1.DeepCopy()
-
-	}
-
-	found := true
-	obj, err := c.kubeClient.CoreV1().Pods(namespace).
-		Get(context.TODO(), podClone.Name, metav1.GetOptions{})
-	if err != nil {
-		if errors.IsNotFound(err) {
-			found = false
-		} else {
-			return err
-		}
-	}
-	if found && (obj.GetLabels() == nil || obj.GetLabels()[createdByLabel] != componentName) {
-		return fmt.Errorf("pod `%s` found but not created by this operator", obj.GetName())
-	}
-	if want && found {
-		if obj.Status.Phase == corev1.PodFailed || obj.Status.Phase == corev1.PodSucceeded {
-			c.ensurePod(false, namespace, podClone)
-		}
-		return nil
-	}
-	if !want && !found {
-		return nil
-	}
-	if want && !found {
-		_, err := c.kubeClient.CoreV1().Pods(namespace).
-			Create(context.TODO(), podClone, metav1.CreateOptions{})
-		return err
-	}
-	if !want && found {
-		err := c.kubeClient.CoreV1().Pods(namespace).
-			Delete(context.TODO(), podClone.Name, metav1.DeleteOptions{})
-		return err
-	}
-	return nil
-}
-
 /*
 if found and not created by the data-populator then return error
 if want and found return nil

@@ -156,7 +156,7 @@ func (tc *templateConfig) getPodTemplate() corev1.Pod {
 						},
 						{
 							Name:  "RSYNC_USERNAME",
-							Value: tc.rsyncPassword,
+							Value: tc.rsyncUsername,
 						},
 					},
 					Ports: []corev1.ContainerPort{
