@@ -19,7 +19,7 @@ The following things are required to use data populators:
     ```console
     kubectl apply -f https://raw.githubusercontent.com/Ab-hishek/data-populator/master/deploy/yamls/data-populator.yaml
     ```
-    NOTE: `openebs-data-population` is reserved for populator and no pvc with `dataSourceRef` should be created in this namespace as the controller ignores PVCs in its own working namespace.
+    **NOTE:** `openebs-data-population` namespace is reserved for populator and no pvc with `dataSourceRef` should be created in this namespace as the controller ignores PVCs in its own working namespace.
   
 3. Preparing a volume which will act as the source for data populator.
     - Create a sample pvc. Please feel free to edit the storageclass as per your need.
@@ -67,7 +67,7 @@ The following things are required to use data populators:
             storage: 2Gi
    ```
    
-   NOTE: Destination PVC will be created in the same namespace as the data populator instance. Also `destinationPVC` field in the above CR has all the `PersistentVolumeClaimSpec` attributes which will be used to create the destination PVC.
+   **NOTE:** Destination PVC will be created in the same namespace as the data populator instance. Also `destinationPVC` field in the above CR has all the `PersistentVolumeClaimSpec` attributes which will be used to create the destination PVC.
    
 6. Wait for the data populator to come to `WaitingForConsumer` or `Completed` state
     ```console
