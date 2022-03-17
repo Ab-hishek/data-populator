@@ -70,7 +70,7 @@ The following things are required to use data populators:
 6. Wait for the data populator to come to `WaitingForConsumer` or `Completed` state
     ```console
     abhishek@abhishek-Mayadata:~$ kubectl get datapopulator.openebs.io/sample-data-populator -o=jsonpath="{.status.state}{'\n'}"
-    WaitingForConsumer
+    Completed
    ```
    
 7. Edit the deployment spec to point to the new pvc and deploy it again
