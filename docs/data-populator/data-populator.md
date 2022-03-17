@@ -73,7 +73,13 @@ The following things are required to use data populators:
     Completed
    ```
    
-7. Edit the deployment spec to point to the new pvc and deploy it again
+7. Edit the deployment spec to point to the new pvc and deploy it again. You can get the name of the new/destination pvc by using the below command
+    ```console
+   abhishek@abhishek-Mayadata:~$ kubectl get pvc -A
+   NAMESPACE   NAME                    STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS         AGE
+   default     sample-pvc              Bound    pvc-bba632ae-98f2-4ee5-abad-b2673caf4835   2Gi        RWO            openebs-hostpath     14d
+   default     sample-pvc-populated    Bound    pvc-ab91512c-8514-4952-b558-d711cd21af56   2Gi        RWO            openebs-hostpath-1   20h
+   ```
 
 8. After deploying the application, check whether the older data is present or not in the new pvc.
     ```console
