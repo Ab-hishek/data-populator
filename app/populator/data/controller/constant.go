@@ -27,6 +27,6 @@ const (
 
 	RsyncNamePrefix  = "rsync-daemon-"
 	rsyncServerImage = "abhishek09dh/rsync-daemon:v0.1"
-	rsyncUsername = "openebs-user"
-	rsyncPassword = "openebs-pass"
+	rsyncUsername    = "openebs-user"
+	rsyncPassword    = "openebs-pass"
 )

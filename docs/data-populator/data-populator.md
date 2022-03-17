@@ -54,8 +54,6 @@ The following things are required to use data populators:
     metadata:
       name: sample-data-populator
     spec:
-      rsyncDaemonUsername: test-user
-      rsyncDaemonPassword: test-pass
       sourcePVCNamespace: default
       sourcePVC: sample-pvc
       destinationPVC:
