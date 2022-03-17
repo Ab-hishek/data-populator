@@ -3,8 +3,8 @@
 Rsync Populator is a volume populator that helps to create a volume from any rsync source. Data populator internally makes use of Rsync Populator to load data into a volume. When a DataPopulator CR is created it sets up rsync source on the source PVC and creates a RsyncPopulator CR and a new PVC pointing to that rsync populator as a data source.
 
 The following things are required to use data populators:
-1. Install a CRD for the specific populator
-2. Install the populator controller itself
+1. Install a CRD for the specific populators
+2. Install the populator controllers itself
 3. Scaling down the application if the source volume is being consumed by it.
 
 ## Copying data from one volume into another
@@ -73,7 +73,7 @@ The following things are required to use data populators:
     Completed
    ```
    
-7. Edit the deployment spec to point to the new pvc and deploy it again. You can get the name of the new/destination pvc by using the below command
+7. Edit the deployment spec to point to the new pvc and deploy it again. You can get the name of the new/destination pvc by using the below command.
     ```console
    abhishek@abhishek-Mayadata:~$ kubectl get pvc -A
    NAMESPACE   NAME                    STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS         AGE

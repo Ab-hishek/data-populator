@@ -15,7 +15,7 @@ Data populator can be used in the following scenarios:
 
 ## Usuage
 
-### Prequisites
+### Prerequisites
 
 Before installing data-populator make sure your kubernetes cluster meets the following requirements:
 
