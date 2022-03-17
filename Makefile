@@ -1,5 +1,5 @@
 DOCKERHUB_USERNAME ?= abhishek09dh
-LATEST_TAG ?= 34
+LATEST_TAG ?= v0.1
 
 .PHONY: crd-gen
 crd-gen:

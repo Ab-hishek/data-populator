@@ -493,7 +493,10 @@ func (c *controller) ensurePod(want bool, namespace string, pod *corev1.Pod) err
 	}
 	if want && found {
 		if obj.Status.Phase == corev1.PodFailed || obj.Status.Phase == corev1.PodSucceeded {
-			c.ensurePod(false, namespace, podClone)
+			err = c.ensurePod(false, namespace, podClone)
+			if err != nil {
+				return err
+			}
 		}
 		return nil
 	}

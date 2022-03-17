@@ -22,8 +22,8 @@ func templateFromDataPopulator(cr internalv1alpha1.DataPopulator) (*templateConf
 		sourcePVCNamespace: cr.Spec.SourcePVCNamespace,
 		destinationPVCSpec: cr.Spec.DestinationPVC,
 		imageName:          rsyncServerImage,
-		rsyncUsername:      cr.Spec.RsyncDaemonUsername,
-		rsyncPassword:      cr.Spec.RsyncDaemonPassword,
+		rsyncUsername:      rsyncUsername,
+		rsyncPassword:      rsyncUsername,
 	}
 	return tc, nil
 }

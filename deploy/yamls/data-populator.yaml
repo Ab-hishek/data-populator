@@ -88,7 +88,7 @@ spec:
       serviceAccount: data-populator
       containers:
         - name: data-populator
-          image: abhishek09dh/data-populator:34
+          image: abhishek09dh/data-populator:v0.1
           imagePullPolicy: Always
           command:
             - data-populator

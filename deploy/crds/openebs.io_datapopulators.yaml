@@ -134,12 +134,6 @@ spec:
                     description: VolumeName is the binding reference to the PersistentVolume backing this claim.
                     type: string
                 type: object
-              rsyncDaemonPassword:
-                description: RsyncServerPassword is used as credential to access rsync daemon by the client.
-                type: string
-              rsyncDaemonUsername:
-                description: RsyncServerUsername is used as credential to access rsync daemon by the client.
-                type: string
               sourcePVC:
                 description: SourcePVC is name of the PVC that we want to copy data from
                 type: string
@@ -148,8 +142,6 @@ spec:
                 type: string
             required:
             - destinationPVC
-            - rsyncDaemonPassword
-            - rsyncDaemonUsername
             - sourcePVC
             - sourcePVCNamespace
             type: object

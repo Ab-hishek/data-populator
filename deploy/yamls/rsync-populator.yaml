@@ -81,13 +81,13 @@ spec:
       serviceAccount: rsync-populator
       containers:
         - name: rsync-populator
-          image: abhishek09dh/rsync-populator:30
+          image: abhishek09dh/rsync-populator:v0.1
           imagePullPolicy: Always
           command:
             - rsync-populator
           args:
             - --v=2
-            - --image-name=abhishek09dh/rsync-client:30
+            - --image-name=abhishek09dh/rsync-client:v0.1
           env:
             - name: POD_NAMESPACE
               valueFrom:

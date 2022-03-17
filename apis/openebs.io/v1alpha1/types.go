@@ -62,10 +62,6 @@ type DataPopulator struct {
 
 // DataPopulatorSpec contains information of the source and target pvc
 type DataPopulatorSpec struct {
-	// RsyncServerUsername is used as credential to access rsync daemon by the client.
-	RsyncDaemonUsername string `json:"rsyncDaemonUsername"`
-	// RsyncServerPassword is used as credential to access rsync daemon by the client.
-	RsyncDaemonPassword string `json:"rsyncDaemonPassword"`
 	// SourcePVC is name of the PVC that we want to copy data from
 	SourcePVC string `json:"sourcePVC"`
 	// SourcePVCNamespace is namespace of the PVC that we want to copy
